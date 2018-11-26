@@ -7,9 +7,9 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-    <ul class="nav justify-content-end">
+    <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link active" href="{{action('HomeController@index')}}">Home</a>
+            <a class="nav-link active bg-white text-dark" href="{{route('home')}}">Home</a>
         </li>
     </ul>
 </nav>
@@ -28,7 +28,7 @@
             </div>
         @endif
     @endif
-    <form method="post" action="{{url('products')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-4"></div>

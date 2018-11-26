@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +10,9 @@
 <nav class="navbar navbar-dark bg-dark">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link active bg-white text-dark" href="{{action('HomeController@index')}}">Home</a>
+            <a class="nav-link active bg-white text-dark" href="{{route('home')}}">Home</a>
         </li>
+    </ul>
 </nav>
 <div class="container">
     <br>
@@ -21,9 +21,10 @@
     @if (\Session::has('success'))
         <div class="alert alert-success">
             <p>{{ \Session::get('success') }}</p>
-        </div><br />
+        </div><br/>
     @endif
-    <a href="{{action('ProductController@create')}}" class="btn btn-info float-right btn-dark"> <i class="material-icons">add</i></a>
+    <a href="{{route('products.create')}}" class="btn btn-info float-right btn-dark"> <i
+            class="material-icons">add</i></a>
     <table class="table table-striped">
         <thead class="thead-dark">
         <tr>
@@ -45,9 +46,9 @@
                 <td><img src="storage/images/thumb/{{$product['image']}}"></td>
                 <td>{{$product['price']}}</td>
 
-            <td><a href="{{action('ProductController@edit', $product['id'])}}" class="btn btn-warning">Edit</a></td>
+                <td><a href="{{route('products.edit', $product['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
-                    <form action="{{action('ProductController@destroy', $product['id'])}}" method="post">
+                    <form action="{{route('products.destroy', $product['id'])}}" method="post">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn btn-danger" type="submit">Delete</button>

@@ -9,25 +9,26 @@
 <nav class="navbar navbar-dark bg-dark">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link active bg-white text-dark" href="{{action('HomeController@index')}}">Home</a>
+            <a class="nav-link active bg-white text-dark" href="{{route('home')}}">Home</a>
         </li>
     </ul>
 </nav>
 <div class="container">
     <br>
     <h2 class="text-center">Edit Product</h2><br/>
+
     @if(isset($errors))
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     @endif
-    @endif
-    <form method="post" action="{{action('ProductController@update', $id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('products.update', $id)}}" enctype="multipart/form-data">
         @csrf
         <input name="_method" type="hidden" value="PATCH">
         <div class="row">

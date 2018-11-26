@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Base;
+
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Base\Criteria;
 use App\Contracts\Repositories\CriteriaContract;
 use App\Exceptions\Repositories\RepositoryException;
+
 abstract class Repository implements CriteriaContract
 {
     /**
@@ -23,6 +26,7 @@ abstract class Repository implements CriteriaContract
      * @var bool
      */
     protected $skipCriteria = false;
+
     /**
      * @param Collection $criterias
      * @throws RepositoryException
@@ -33,29 +37,35 @@ abstract class Repository implements CriteriaContract
         $this->resetScope();
         $this->resetQuery();
     }
+
     abstract protected function getClass();
+
     private function resetQuery()
     {
         $this->model = $this->makeModel();
     }
+
     public function all($columns = ['*'])
     {
         $this->resetQuery();
         $this->applyCriteria();
         return $this->model->select($columns)->get();
     }
+
     public function pluck($key, $value = null)
     {
         $this->resetQuery();
         $this->applyCriteria();
         return $this->model->pluck($key, $value);
     }
+
     public function find($id, $columns = ['*'])
     {
         $this->resetQuery();
         $this->applyCriteria();
         return $this->model->find($id);
     }
+
     public function findBy($field, $value, $columns = ['*'])
     {
         $this->resetQuery();
@@ -64,10 +74,12 @@ abstract class Repository implements CriteriaContract
             ->addSelect($columns);
         return $query;
     }
+
     public function create($data)
     {
         return $this->model->create($data);
     }
+
     public function activate($id)
     {
         $this->resetQuery();
@@ -78,6 +90,7 @@ abstract class Repository implements CriteriaContract
         }
         throw new RepositoryException("Model not found.", 404);
     }
+
     public function deactivate($id)
     {
         $this->resetQuery();
@@ -85,6 +98,7 @@ abstract class Repository implements CriteriaContract
         $model->is_active = false;
         return $model->save();
     }
+
     public function delete($id)
     {
         $this->resetQuery();
@@ -92,6 +106,7 @@ abstract class Repository implements CriteriaContract
         $model->delete();
         return $model;
     }
+
     public function update($id, $data)
     {
         $this->resetQuery();
@@ -99,18 +114,21 @@ abstract class Repository implements CriteriaContract
         $model->update($data);
         return $model;
     }
+
     public function paginate($perPage = 15, $columns = ['*'])
     {
         $this->resetQuery();
         $this->applyCriteria();
         return $this->model->paginate($perPage, $columns);
     }
+
     public function count()
     {
         $this->resetQuery();
         $this->applyCriteria();
         return $this->model->count();
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Builder
      * @throws RepositoryException
@@ -125,6 +143,7 @@ abstract class Repository implements CriteriaContract
         }
         return $model->newQuery();
     }
+
     /**
      * @return $this
      */
@@ -133,6 +152,7 @@ abstract class Repository implements CriteriaContract
         $this->skipCriteria(false);
         return $this;
     }
+
     /**
      * @param bool $status
      * @return $this
@@ -142,6 +162,7 @@ abstract class Repository implements CriteriaContract
         $this->skipCriteria = $status;
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -149,6 +170,7 @@ abstract class Repository implements CriteriaContract
     {
         return $this->criteria;
     }
+
     /**
      * @param Criteria $criteria
      * @return $this
@@ -158,6 +180,7 @@ abstract class Repository implements CriteriaContract
         $this->model = $criteria->apply($this->model, $this);
         return $this;
     }
+
     /**
      * @param mixed $criterias
      * @return $this
@@ -173,6 +196,7 @@ abstract class Repository implements CriteriaContract
         }
         return $this;
     }
+
     /**
      * @return $this
      */
