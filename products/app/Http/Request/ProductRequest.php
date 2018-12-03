@@ -33,7 +33,18 @@ class ProductRequest extends FormRequest
             'product.title' => 'required',
             'product.description' => 'required',
             'product.image' => 'required|image',
-            'product.price' => 'required|numeric'
+            'product.price' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'product.title.required' => 'The title field is required',
+            'product.description.required' => 'The description field is required',
+            'product.image.required' => 'The image field is required',
+            'product.image.image' => 'The image field must be an image (jpeg, png, bmp, gif, or svg)',
+            'product.price.required' => 'The price field is required',
         ];
     }
 }

@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Edit</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
-<nav class="navbar navbar-dark bg-dark">
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active bg-white text-dark" href="{{route('home')}}">Home</a>
-        </li>
-    </ul>
-</nav>
+@extends('layouts.app')
+@section('content')
 <div class="container">
     <br>
     <h2 class="text-center">Edit Product</h2><br/>
@@ -57,7 +44,7 @@
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
                 <label for="price">Price:</label>
-                <input type="text" class="form-control" name="product[price]" value="{{$product->price}}">
+                <input type="text" class="form-control" id="dinheiro" name="product[price]" value="{{$product->price}}">
             </div>
         </div>
         <div class="row">
@@ -68,5 +55,4 @@
         </div>
     </form>
 </div>
-</body>
-</html>
+@endsection

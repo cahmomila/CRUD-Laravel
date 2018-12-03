@@ -25,10 +25,13 @@ class ProductsRepository extends Repository
     public function create($productData)
     {
         $file = $productData['image'];
-        $image_name = $this->uploadImage($file);
-
-        $productData['image'] = $image_name;
-        $productData['thumbnail'] = 'images/thumb/' . $image_name;
+        $imageName = $this->uploadImage($file);
+        $price = $productData['price'];
+        $price = str_replace('.', '', $price);
+        $price = str_replace(',', '.', $price);
+        $productData['price'] = $price;
+        $productData['image'] = $imageName;
+        $productData['thumbnail'] = 'images/thumb/' . $imageName;
 
         $this->model->create($productData);
 
@@ -39,10 +42,13 @@ class ProductsRepository extends Repository
         $product = $this->find($id);
         $this->deleteIfExists($product);
 
-        $image_name = $this->uploadImage($productData['image']);
-
-        $productData['image'] = $image_name;
-        $productData['thumbnail'] = 'images/thumb/' . $image_name;
+        $imageName = $this->uploadImage($productData['image']);
+        $price = $productData['price'];
+        $price = str_replace('.', '', $price);
+        $price = str_replace(',', '.', $price);
+        $productData['price'] = $price;
+        $productData['image'] = $imageName;
+        $productData['thumbnail'] = 'images/thumb/' . $imageName;
 
         $product->update($productData);
     }

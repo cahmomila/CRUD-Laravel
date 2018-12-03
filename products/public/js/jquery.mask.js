@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(5);
-var isBuffer = __webpack_require__(19);
+var isBuffer = __webpack_require__(21);
 
 /*global toString:true*/
 
@@ -10779,7 +10779,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(21);
+var normalizeHeaderName = __webpack_require__(23);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -13672,12 +13672,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(22);
-var buildURL = __webpack_require__(24);
-var parseHeaders = __webpack_require__(25);
-var isURLSameOrigin = __webpack_require__(26);
+var settle = __webpack_require__(24);
+var buildURL = __webpack_require__(26);
+var parseHeaders = __webpack_require__(27);
+var isURLSameOrigin = __webpack_require__(28);
 var createError = __webpack_require__(8);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(27);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(29);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -13774,7 +13774,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(28);
+      var cookies = __webpack_require__(30);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -13858,7 +13858,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(23);
+var enhanceError = __webpack_require__(25);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -13919,13 +13919,223 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-__webpack_require__(43);
-__webpack_require__(44);
+__webpack_require__(13);
+__webpack_require__(14);
 module.exports = __webpack_require__(45);
 
 
 /***/ }),
 /* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+// jQuery Mask Plugin v1.14.15
+// github.com/igorescobar/jQuery-Mask-Plugin
+var $jscomp = { scope: {}, findInternal: function findInternal(a, l, d) {
+                a instanceof String && (a = String(a));for (var p = a.length, h = 0; h < p; h++) {
+                        var b = a[h];if (l.call(d, b, h, a)) return { i: h, v: b };
+                }return { i: -1, v: void 0 };
+        } };$jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, l, d) {
+        if (d.get || d.set) throw new TypeError("ES3 does not support getters and setters.");a != Array.prototype && a != Object.prototype && (a[l] = d.value);
+};
+$jscomp.getGlobal = function (a) {
+        return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a;
+};$jscomp.global = $jscomp.getGlobal(this);$jscomp.polyfill = function (a, l, d, p) {
+        if (l) {
+                d = $jscomp.global;a = a.split(".");for (p = 0; p < a.length - 1; p++) {
+                        var h = a[p];h in d || (d[h] = {});d = d[h];
+                }a = a[a.length - 1];p = d[a];l = l(p);l != p && null != l && $jscomp.defineProperty(d, a, { configurable: !0, writable: !0, value: l });
+        }
+};
+$jscomp.polyfill("Array.prototype.find", function (a) {
+        return a ? a : function (a, d) {
+                return $jscomp.findInternal(this, a, d).v;
+        };
+}, "es6-impl", "es3");
+(function (a, l, d) {
+         true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (a),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" === (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = a(require("jquery")) : a(l || d);
+})(function (a) {
+        var l = function l(b, e, f) {
+                var c = { invalid: [], getCaret: function getCaret() {
+                                try {
+                                        var a,
+                                            r = 0,
+                                            g = b.get(0),
+                                            e = document.selection,
+                                            f = g.selectionStart;if (e && -1 === navigator.appVersion.indexOf("MSIE 10")) a = e.createRange(), a.moveStart("character", -c.val().length), r = a.text.length;else if (f || "0" === f) r = f;return r;
+                                } catch (C) {}
+                        }, setCaret: function setCaret(a) {
+                                try {
+                                        if (b.is(":focus")) {
+                                                var c,
+                                                    g = b.get(0);g.setSelectionRange ? g.setSelectionRange(a, a) : (c = g.createTextRange(), c.collapse(!0), c.moveEnd("character", a), c.moveStart("character", a), c.select());
+                                        }
+                                } catch (B) {}
+                        }, events: function events() {
+                                b.on("keydown.mask", function (a) {
+                                        b.data("mask-keycode", a.keyCode || a.which);b.data("mask-previus-value", b.val());b.data("mask-previus-caret-pos", c.getCaret());c.maskDigitPosMapOld = c.maskDigitPosMap;
+                                }).on(a.jMaskGlobals.useInput ? "input.mask" : "keyup.mask", c.behaviour).on("paste.mask drop.mask", function () {
+                                        setTimeout(function () {
+                                                b.keydown().keyup();
+                                        }, 100);
+                                }).on("change.mask", function () {
+                                        b.data("changed", !0);
+                                }).on("blur.mask", function () {
+                                        d === c.val() || b.data("changed") || b.trigger("change");b.data("changed", !1);
+                                }).on("blur.mask", function () {
+                                        d = c.val();
+                                }).on("focus.mask", function (b) {
+                                        !0 === f.selectOnFocus && a(b.target).select();
+                                }).on("focusout.mask", function () {
+                                        f.clearIfNotMatch && !h.test(c.val()) && c.val("");
+                                });
+                        }, getRegexMask: function getRegexMask() {
+                                for (var a = [], b, c, f, n, d = 0; d < e.length; d++) {
+                                        (b = m.translation[e.charAt(d)]) ? (c = b.pattern.toString().replace(/.{1}$|^.{1}/g, ""), f = b.optional, (b = b.recursive) ? (a.push(e.charAt(d)), n = { digit: e.charAt(d), pattern: c }) : a.push(f || b ? c + "?" : c)) : a.push(e.charAt(d).replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"));
+                                }a = a.join("");n && (a = a.replace(new RegExp("(" + n.digit + "(.*" + n.digit + ")?)"), "($1)?").replace(new RegExp(n.digit, "g"), n.pattern));return new RegExp(a);
+                        }, destroyEvents: function destroyEvents() {
+                                b.off("input keydown keyup paste drop blur focusout ".split(" ").join(".mask "));
+                        }, val: function val(a) {
+                                var c = b.is("input") ? "val" : "text";if (0 < arguments.length) {
+                                        if (b[c]() !== a) b[c](a);
+                                        c = b;
+                                } else c = b[c]();return c;
+                        }, calculateCaretPosition: function calculateCaretPosition() {
+                                var a = b.data("mask-previus-value") || "",
+                                    e = c.getMasked(),
+                                    g = c.getCaret();if (a !== e) {
+                                        var f = b.data("mask-previus-caret-pos") || 0,
+                                            e = e.length,
+                                            d = a.length,
+                                            m = a = 0,
+                                            h = 0,
+                                            l = 0,
+                                            k;for (k = g; k < e && c.maskDigitPosMap[k]; k++) {
+                                                m++;
+                                        }for (k = g - 1; 0 <= k && c.maskDigitPosMap[k]; k--) {
+                                                a++;
+                                        }for (k = g - 1; 0 <= k; k--) {
+                                                c.maskDigitPosMap[k] && h++;
+                                        }for (k = f - 1; 0 <= k; k--) {
+                                                c.maskDigitPosMapOld[k] && l++;
+                                        }g > d ? g = 10 * e : f >= g && f !== d ? c.maskDigitPosMapOld[g] || (f = g, g = g - (l - h) - a, c.maskDigitPosMap[g] && (g = f)) : g > f && (g = g + (h - l) + m);
+                                }return g;
+                        }, behaviour: function behaviour(f) {
+                                f = f || window.event;c.invalid = [];var e = b.data("mask-keycode");if (-1 === a.inArray(e, m.byPassKeys)) {
+                                        var e = c.getMasked(),
+                                            g = c.getCaret();setTimeout(function () {
+                                                c.setCaret(c.calculateCaretPosition());
+                                        }, a.jMaskGlobals.keyStrokeCompensation);c.val(e);c.setCaret(g);return c.callbacks(f);
+                                }
+                        }, getMasked: function getMasked(a, b) {
+                                var g = [],
+                                    d = void 0 === b ? c.val() : b + "",
+                                    n = 0,
+                                    h = e.length,
+                                    q = 0,
+                                    l = d.length,
+                                    k = 1,
+                                    r = "push",
+                                    p = -1,
+                                    t = 0,
+                                    y = [],
+                                    v,
+                                    z;f.reverse ? (r = "unshift", k = -1, v = 0, n = h - 1, q = l - 1, z = function z() {
+                                        return -1 < n && -1 < q;
+                                }) : (v = h - 1, z = function z() {
+                                        return n < h && q < l;
+                                });for (var A; z();) {
+                                        var x = e.charAt(n),
+                                            w = d.charAt(q),
+                                            u = m.translation[x];if (u) w.match(u.pattern) ? (g[r](w), u.recursive && (-1 === p ? p = n : n === v && n !== p && (n = p - k), v === p && (n -= k)), n += k) : w === A ? (t--, A = void 0) : u.optional ? (n += k, q -= k) : u.fallback ? (g[r](u.fallback), n += k, q -= k) : c.invalid.push({ p: q, v: w, e: u.pattern }), q += k;else {
+                                                if (!a) g[r](x);w === x ? (y.push(q), q += k) : (A = x, y.push(q + t), t++);n += k;
+                                        }
+                                }d = e.charAt(v);h !== l + 1 || m.translation[d] || g.push(d);g = g.join("");c.mapMaskdigitPositions(g, y, l);return g;
+                        }, mapMaskdigitPositions: function mapMaskdigitPositions(a, b, e) {
+                                a = f.reverse ? a.length - e : 0;c.maskDigitPosMap = {};for (e = 0; e < b.length; e++) {
+                                        c.maskDigitPosMap[b[e] + a] = 1;
+                                }
+                        }, callbacks: function callbacks(a) {
+                                var h = c.val(),
+                                    g = h !== d,
+                                    m = [h, a, b, f],
+                                    q = function q(a, b, c) {
+                                        "function" === typeof f[a] && b && f[a].apply(this, c);
+                                };q("onChange", !0 === g, m);q("onKeyPress", !0 === g, m);q("onComplete", h.length === e.length, m);q("onInvalid", 0 < c.invalid.length, [h, a, b, c.invalid, f]);
+                        } };b = a(b);var m = this,
+                    d = c.val(),
+                    h;e = "function" === typeof e ? e(c.val(), void 0, b, f) : e;m.mask = e;m.options = f;m.remove = function () {
+                        var a = c.getCaret();m.options.placeholder && b.removeAttr("placeholder");b.data("mask-maxlength") && b.removeAttr("maxlength");c.destroyEvents();c.val(m.getCleanVal());c.setCaret(a);return b;
+                };m.getCleanVal = function () {
+                        return c.getMasked(!0);
+                };m.getMaskedVal = function (a) {
+                        return c.getMasked(!1, a);
+                };m.init = function (d) {
+                        d = d || !1;f = f || {};m.clearIfNotMatch = a.jMaskGlobals.clearIfNotMatch;m.byPassKeys = a.jMaskGlobals.byPassKeys;m.translation = a.extend({}, a.jMaskGlobals.translation, f.translation);
+                        m = a.extend(!0, {}, m, f);h = c.getRegexMask();if (d) c.events(), c.val(c.getMasked());else {
+                                f.placeholder && b.attr("placeholder", f.placeholder);b.data("mask") && b.attr("autocomplete", "off");d = 0;for (var l = !0; d < e.length; d++) {
+                                        var g = m.translation[e.charAt(d)];if (g && g.recursive) {
+                                                l = !1;break;
+                                        }
+                                }l && b.attr("maxlength", e.length).data("mask-maxlength", !0);c.destroyEvents();c.events();d = c.getCaret();c.val(c.getMasked());c.setCaret(d);
+                        }
+                };m.init(!b.is("input"));
+        };a.maskWatchers = {};var d = function d() {
+                var b = a(this),
+                    e = {},
+                    f = b.attr("data-mask");
+                b.attr("data-mask-reverse") && (e.reverse = !0);b.attr("data-mask-clearifnotmatch") && (e.clearIfNotMatch = !0);"true" === b.attr("data-mask-selectonfocus") && (e.selectOnFocus = !0);if (p(b, f, e)) return b.data("mask", new l(this, f, e));
+        },
+            p = function p(b, e, f) {
+                f = f || {};var c = a(b).data("mask"),
+                    d = JSON.stringify;b = a(b).val() || a(b).text();try {
+                        return "function" === typeof e && (e = e(b)), "object" !== (typeof c === "undefined" ? "undefined" : _typeof(c)) || d(c.options) !== d(f) || c.mask !== e;
+                } catch (t) {}
+        },
+            h = function h(a) {
+                var b = document.createElement("div"),
+                    d;a = "on" + a;d = a in b;d || (b.setAttribute(a, "return;"), d = "function" === typeof b[a]);return d;
+        };a.fn.mask = function (b, d) {
+                d = d || {};var e = this.selector,
+                    c = a.jMaskGlobals,
+                    h = c.watchInterval,
+                    c = d.watchInputs || c.watchInputs,
+                    t = function t() {
+                        if (p(this, b, d)) return a(this).data("mask", new l(this, b, d));
+                };a(this).each(t);e && "" !== e && c && (clearInterval(a.maskWatchers[e]), a.maskWatchers[e] = setInterval(function () {
+                        a(document).find(e).each(t);
+                }, h));return this;
+        };a.fn.masked = function (a) {
+                return this.data("mask").getMaskedVal(a);
+        };a.fn.unmask = function () {
+                clearInterval(a.maskWatchers[this.selector]);
+                delete a.maskWatchers[this.selector];return this.each(function () {
+                        var b = a(this).data("mask");b && b.remove().removeData("mask");
+                });
+        };a.fn.cleanVal = function () {
+                return this.data("mask").getCleanVal();
+        };a.applyDataMask = function (b) {
+                b = b || a.jMaskGlobals.maskElements;(b instanceof a ? b : a(b)).filter(a.jMaskGlobals.dataMaskAttr).each(d);
+        };h = { maskElements: "input,td,span,div", dataMaskAttr: "*[data-mask]", dataMask: !0, watchInterval: 300, watchInputs: !0, keyStrokeCompensation: 10, useInput: !/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent) && h("input"), watchDataMask: !1, byPassKeys: [9, 16, 17, 18, 36, 37, 38, 39, 40, 91], translation: { 0: { pattern: /\d/ }, 9: { pattern: /\d/, optional: !0 }, "#": { pattern: /\d/, recursive: !0 }, A: { pattern: /[a-zA-Z0-9]/ }, S: { pattern: /[a-zA-Z]/ } } };a.jMaskGlobals = a.jMaskGlobals || {};h = a.jMaskGlobals = a.extend(!0, {}, h, a.jMaskGlobals);h.dataMask && a.applyDataMask();setInterval(function () {
+                a.jMaskGlobals.watchDataMask && a.applyDataMask();
+        }, h.watchInterval);
+}, window.jQuery, window.Zepto);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $('#dinheiro').mask("###.##0,00", { reverse: true });
+});
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13935,9 +14145,9 @@ module.exports = __webpack_require__(45);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(13);
+__webpack_require__(15);
 
-window.Vue = __webpack_require__(36);
+window.Vue = __webpack_require__(38);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13945,18 +14155,18 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(39));
+Vue.component('example-component', __webpack_require__(41));
 
 var app = new Vue({
   el: '#app'
 });
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(14);
+window._ = __webpack_require__(16);
 window.Popper = __webpack_require__(4).default;
 
 /**
@@ -13968,7 +14178,7 @@ window.Popper = __webpack_require__(4).default;
 try {
   window.$ = window.jQuery = __webpack_require__(2);
 
-  __webpack_require__(16);
+  __webpack_require__(18);
 } catch (e) {}
 
 /**
@@ -13977,7 +14187,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(17);
+window.axios = __webpack_require__(19);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14013,7 +14223,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31125,10 +31335,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(15)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)(module)))
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31156,7 +31366,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35106,13 +35316,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(18);
+module.exports = __webpack_require__(20);
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35120,7 +35330,7 @@ module.exports = __webpack_require__(18);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(5);
-var Axios = __webpack_require__(20);
+var Axios = __webpack_require__(22);
 var defaults = __webpack_require__(3);
 
 /**
@@ -35155,14 +35365,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(10);
-axios.CancelToken = __webpack_require__(34);
+axios.CancelToken = __webpack_require__(36);
 axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(35);
+axios.spread = __webpack_require__(37);
 
 module.exports = axios;
 
@@ -35171,7 +35381,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports) {
 
 /*!
@@ -35198,7 +35408,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35206,8 +35416,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(29);
-var dispatchRequest = __webpack_require__(30);
+var InterceptorManager = __webpack_require__(31);
+var dispatchRequest = __webpack_require__(32);
 
 /**
  * Create a new instance of Axios
@@ -35284,7 +35494,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35303,7 +35513,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35336,7 +35546,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35364,7 +35574,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35437,7 +35647,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35497,7 +35707,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35572,7 +35782,7 @@ module.exports = (
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35615,7 +35825,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35675,7 +35885,7 @@ module.exports = (
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35734,18 +35944,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(31);
+var transformData = __webpack_require__(33);
 var isCancel = __webpack_require__(9);
 var defaults = __webpack_require__(3);
-var isAbsoluteURL = __webpack_require__(32);
-var combineURLs = __webpack_require__(33);
+var isAbsoluteURL = __webpack_require__(34);
+var combineURLs = __webpack_require__(35);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -35827,7 +36037,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35854,7 +36064,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35875,7 +36085,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35896,7 +36106,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35960,7 +36170,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35994,7 +36204,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46957,10 +47167,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(37).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -47016,7 +47226,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(38);
+__webpack_require__(40);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -47030,7 +47240,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47223,15 +47433,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(40)
+var normalizeComponent = __webpack_require__(42)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47270,7 +47480,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -47379,7 +47589,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47408,7 +47618,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47449,216 +47659,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-299e239e", module.exports)
   }
 }
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-// jQuery Mask Plugin v1.14.15
-// github.com/igorescobar/jQuery-Mask-Plugin
-var $jscomp = { scope: {}, findInternal: function findInternal(a, l, d) {
-                a instanceof String && (a = String(a));for (var p = a.length, h = 0; h < p; h++) {
-                        var b = a[h];if (l.call(d, b, h, a)) return { i: h, v: b };
-                }return { i: -1, v: void 0 };
-        } };$jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, l, d) {
-        if (d.get || d.set) throw new TypeError("ES3 does not support getters and setters.");a != Array.prototype && a != Object.prototype && (a[l] = d.value);
-};
-$jscomp.getGlobal = function (a) {
-        return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a;
-};$jscomp.global = $jscomp.getGlobal(this);$jscomp.polyfill = function (a, l, d, p) {
-        if (l) {
-                d = $jscomp.global;a = a.split(".");for (p = 0; p < a.length - 1; p++) {
-                        var h = a[p];h in d || (d[h] = {});d = d[h];
-                }a = a[a.length - 1];p = d[a];l = l(p);l != p && null != l && $jscomp.defineProperty(d, a, { configurable: !0, writable: !0, value: l });
-        }
-};
-$jscomp.polyfill("Array.prototype.find", function (a) {
-        return a ? a : function (a, d) {
-                return $jscomp.findInternal(this, a, d).v;
-        };
-}, "es6-impl", "es3");
-(function (a, l, d) {
-         true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (a),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" === (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = a(require("jquery")) : a(l || d);
-})(function (a) {
-        var l = function l(b, e, f) {
-                var c = { invalid: [], getCaret: function getCaret() {
-                                try {
-                                        var a,
-                                            r = 0,
-                                            g = b.get(0),
-                                            e = document.selection,
-                                            f = g.selectionStart;if (e && -1 === navigator.appVersion.indexOf("MSIE 10")) a = e.createRange(), a.moveStart("character", -c.val().length), r = a.text.length;else if (f || "0" === f) r = f;return r;
-                                } catch (C) {}
-                        }, setCaret: function setCaret(a) {
-                                try {
-                                        if (b.is(":focus")) {
-                                                var c,
-                                                    g = b.get(0);g.setSelectionRange ? g.setSelectionRange(a, a) : (c = g.createTextRange(), c.collapse(!0), c.moveEnd("character", a), c.moveStart("character", a), c.select());
-                                        }
-                                } catch (B) {}
-                        }, events: function events() {
-                                b.on("keydown.mask", function (a) {
-                                        b.data("mask-keycode", a.keyCode || a.which);b.data("mask-previus-value", b.val());b.data("mask-previus-caret-pos", c.getCaret());c.maskDigitPosMapOld = c.maskDigitPosMap;
-                                }).on(a.jMaskGlobals.useInput ? "input.mask" : "keyup.mask", c.behaviour).on("paste.mask drop.mask", function () {
-                                        setTimeout(function () {
-                                                b.keydown().keyup();
-                                        }, 100);
-                                }).on("change.mask", function () {
-                                        b.data("changed", !0);
-                                }).on("blur.mask", function () {
-                                        d === c.val() || b.data("changed") || b.trigger("change");b.data("changed", !1);
-                                }).on("blur.mask", function () {
-                                        d = c.val();
-                                }).on("focus.mask", function (b) {
-                                        !0 === f.selectOnFocus && a(b.target).select();
-                                }).on("focusout.mask", function () {
-                                        f.clearIfNotMatch && !h.test(c.val()) && c.val("");
-                                });
-                        }, getRegexMask: function getRegexMask() {
-                                for (var a = [], b, c, f, n, d = 0; d < e.length; d++) {
-                                        (b = m.translation[e.charAt(d)]) ? (c = b.pattern.toString().replace(/.{1}$|^.{1}/g, ""), f = b.optional, (b = b.recursive) ? (a.push(e.charAt(d)), n = { digit: e.charAt(d), pattern: c }) : a.push(f || b ? c + "?" : c)) : a.push(e.charAt(d).replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"));
-                                }a = a.join("");n && (a = a.replace(new RegExp("(" + n.digit + "(.*" + n.digit + ")?)"), "($1)?").replace(new RegExp(n.digit, "g"), n.pattern));return new RegExp(a);
-                        }, destroyEvents: function destroyEvents() {
-                                b.off("input keydown keyup paste drop blur focusout ".split(" ").join(".mask "));
-                        }, val: function val(a) {
-                                var c = b.is("input") ? "val" : "text";if (0 < arguments.length) {
-                                        if (b[c]() !== a) b[c](a);
-                                        c = b;
-                                } else c = b[c]();return c;
-                        }, calculateCaretPosition: function calculateCaretPosition() {
-                                var a = b.data("mask-previus-value") || "",
-                                    e = c.getMasked(),
-                                    g = c.getCaret();if (a !== e) {
-                                        var f = b.data("mask-previus-caret-pos") || 0,
-                                            e = e.length,
-                                            d = a.length,
-                                            m = a = 0,
-                                            h = 0,
-                                            l = 0,
-                                            k;for (k = g; k < e && c.maskDigitPosMap[k]; k++) {
-                                                m++;
-                                        }for (k = g - 1; 0 <= k && c.maskDigitPosMap[k]; k--) {
-                                                a++;
-                                        }for (k = g - 1; 0 <= k; k--) {
-                                                c.maskDigitPosMap[k] && h++;
-                                        }for (k = f - 1; 0 <= k; k--) {
-                                                c.maskDigitPosMapOld[k] && l++;
-                                        }g > d ? g = 10 * e : f >= g && f !== d ? c.maskDigitPosMapOld[g] || (f = g, g = g - (l - h) - a, c.maskDigitPosMap[g] && (g = f)) : g > f && (g = g + (h - l) + m);
-                                }return g;
-                        }, behaviour: function behaviour(f) {
-                                f = f || window.event;c.invalid = [];var e = b.data("mask-keycode");if (-1 === a.inArray(e, m.byPassKeys)) {
-                                        var e = c.getMasked(),
-                                            g = c.getCaret();setTimeout(function () {
-                                                c.setCaret(c.calculateCaretPosition());
-                                        }, a.jMaskGlobals.keyStrokeCompensation);c.val(e);c.setCaret(g);return c.callbacks(f);
-                                }
-                        }, getMasked: function getMasked(a, b) {
-                                var g = [],
-                                    d = void 0 === b ? c.val() : b + "",
-                                    n = 0,
-                                    h = e.length,
-                                    q = 0,
-                                    l = d.length,
-                                    k = 1,
-                                    r = "push",
-                                    p = -1,
-                                    t = 0,
-                                    y = [],
-                                    v,
-                                    z;f.reverse ? (r = "unshift", k = -1, v = 0, n = h - 1, q = l - 1, z = function z() {
-                                        return -1 < n && -1 < q;
-                                }) : (v = h - 1, z = function z() {
-                                        return n < h && q < l;
-                                });for (var A; z();) {
-                                        var x = e.charAt(n),
-                                            w = d.charAt(q),
-                                            u = m.translation[x];if (u) w.match(u.pattern) ? (g[r](w), u.recursive && (-1 === p ? p = n : n === v && n !== p && (n = p - k), v === p && (n -= k)), n += k) : w === A ? (t--, A = void 0) : u.optional ? (n += k, q -= k) : u.fallback ? (g[r](u.fallback), n += k, q -= k) : c.invalid.push({ p: q, v: w, e: u.pattern }), q += k;else {
-                                                if (!a) g[r](x);w === x ? (y.push(q), q += k) : (A = x, y.push(q + t), t++);n += k;
-                                        }
-                                }d = e.charAt(v);h !== l + 1 || m.translation[d] || g.push(d);g = g.join("");c.mapMaskdigitPositions(g, y, l);return g;
-                        }, mapMaskdigitPositions: function mapMaskdigitPositions(a, b, e) {
-                                a = f.reverse ? a.length - e : 0;c.maskDigitPosMap = {};for (e = 0; e < b.length; e++) {
-                                        c.maskDigitPosMap[b[e] + a] = 1;
-                                }
-                        }, callbacks: function callbacks(a) {
-                                var h = c.val(),
-                                    g = h !== d,
-                                    m = [h, a, b, f],
-                                    q = function q(a, b, c) {
-                                        "function" === typeof f[a] && b && f[a].apply(this, c);
-                                };q("onChange", !0 === g, m);q("onKeyPress", !0 === g, m);q("onComplete", h.length === e.length, m);q("onInvalid", 0 < c.invalid.length, [h, a, b, c.invalid, f]);
-                        } };b = a(b);var m = this,
-                    d = c.val(),
-                    h;e = "function" === typeof e ? e(c.val(), void 0, b, f) : e;m.mask = e;m.options = f;m.remove = function () {
-                        var a = c.getCaret();m.options.placeholder && b.removeAttr("placeholder");b.data("mask-maxlength") && b.removeAttr("maxlength");c.destroyEvents();c.val(m.getCleanVal());c.setCaret(a);return b;
-                };m.getCleanVal = function () {
-                        return c.getMasked(!0);
-                };m.getMaskedVal = function (a) {
-                        return c.getMasked(!1, a);
-                };m.init = function (d) {
-                        d = d || !1;f = f || {};m.clearIfNotMatch = a.jMaskGlobals.clearIfNotMatch;m.byPassKeys = a.jMaskGlobals.byPassKeys;m.translation = a.extend({}, a.jMaskGlobals.translation, f.translation);
-                        m = a.extend(!0, {}, m, f);h = c.getRegexMask();if (d) c.events(), c.val(c.getMasked());else {
-                                f.placeholder && b.attr("placeholder", f.placeholder);b.data("mask") && b.attr("autocomplete", "off");d = 0;for (var l = !0; d < e.length; d++) {
-                                        var g = m.translation[e.charAt(d)];if (g && g.recursive) {
-                                                l = !1;break;
-                                        }
-                                }l && b.attr("maxlength", e.length).data("mask-maxlength", !0);c.destroyEvents();c.events();d = c.getCaret();c.val(c.getMasked());c.setCaret(d);
-                        }
-                };m.init(!b.is("input"));
-        };a.maskWatchers = {};var d = function d() {
-                var b = a(this),
-                    e = {},
-                    f = b.attr("data-mask");
-                b.attr("data-mask-reverse") && (e.reverse = !0);b.attr("data-mask-clearifnotmatch") && (e.clearIfNotMatch = !0);"true" === b.attr("data-mask-selectonfocus") && (e.selectOnFocus = !0);if (p(b, f, e)) return b.data("mask", new l(this, f, e));
-        },
-            p = function p(b, e, f) {
-                f = f || {};var c = a(b).data("mask"),
-                    d = JSON.stringify;b = a(b).val() || a(b).text();try {
-                        return "function" === typeof e && (e = e(b)), "object" !== (typeof c === "undefined" ? "undefined" : _typeof(c)) || d(c.options) !== d(f) || c.mask !== e;
-                } catch (t) {}
-        },
-            h = function h(a) {
-                var b = document.createElement("div"),
-                    d;a = "on" + a;d = a in b;d || (b.setAttribute(a, "return;"), d = "function" === typeof b[a]);return d;
-        };a.fn.mask = function (b, d) {
-                d = d || {};var e = this.selector,
-                    c = a.jMaskGlobals,
-                    h = c.watchInterval,
-                    c = d.watchInputs || c.watchInputs,
-                    t = function t() {
-                        if (p(this, b, d)) return a(this).data("mask", new l(this, b, d));
-                };a(this).each(t);e && "" !== e && c && (clearInterval(a.maskWatchers[e]), a.maskWatchers[e] = setInterval(function () {
-                        a(document).find(e).each(t);
-                }, h));return this;
-        };a.fn.masked = function (a) {
-                return this.data("mask").getMaskedVal(a);
-        };a.fn.unmask = function () {
-                clearInterval(a.maskWatchers[this.selector]);
-                delete a.maskWatchers[this.selector];return this.each(function () {
-                        var b = a(this).data("mask");b && b.remove().removeData("mask");
-                });
-        };a.fn.cleanVal = function () {
-                return this.data("mask").getCleanVal();
-        };a.applyDataMask = function (b) {
-                b = b || a.jMaskGlobals.maskElements;(b instanceof a ? b : a(b)).filter(a.jMaskGlobals.dataMaskAttr).each(d);
-        };h = { maskElements: "input,td,span,div", dataMaskAttr: "*[data-mask]", dataMask: !0, watchInterval: 300, watchInputs: !0, keyStrokeCompensation: 10, useInput: !/Chrome\/[2-4][0-9]|SamsungBrowser/.test(window.navigator.userAgent) && h("input"), watchDataMask: !1, byPassKeys: [9, 16, 17, 18, 36, 37, 38, 39, 40, 91], translation: { 0: { pattern: /\d/ }, 9: { pattern: /\d/, optional: !0 }, "#": { pattern: /\d/, recursive: !0 }, A: { pattern: /[a-zA-Z0-9]/ }, S: { pattern: /[a-zA-Z]/ } } };a.jMaskGlobals = a.jMaskGlobals || {};h = a.jMaskGlobals = a.extend(!0, {}, h, a.jMaskGlobals);h.dataMask && a.applyDataMask();setInterval(function () {
-                a.jMaskGlobals.watchDataMask && a.applyDataMask();
-        }, h.watchInterval);
-}, window.jQuery, window.Zepto);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-    $('#dinheiro').mask('000.000,00', { reverse: true });
-});
 
 /***/ }),
 /* 45 */
