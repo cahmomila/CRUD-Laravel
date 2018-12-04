@@ -12,7 +12,7 @@
         @endif
         <a href="{{route('products.create')}}" class="btn btn-info float-right btn-dark"> <i
                 class="material-icons">add</i></a>
-        <table class="table table-striped">
+        <table style="text-align: center" class="table table-striped table-hover">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -31,7 +31,7 @@
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
                     <td><img src="storage/images/thumb/{{$product->image}}"></td>
-                    <td id="dinheiro">{{$product->price}}</td>
+                    <td data-mask="000.000,00" data-mask-reverse="true">{{$product->price}}</td>
 
                     <td><a href="{{route('products.edit', $product->id)}}" class="btn btn-warning">Edit</a></td>
                     <td>

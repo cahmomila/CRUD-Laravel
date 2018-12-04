@@ -20,22 +20,25 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="form-group col-md-4">
-                    <label for="Name">Title:</label>
-                    <input type="text" class="form-control" value="{{ old('product.title') ?? '' }}" name="product[title]">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" value="{{ old('product.title') ?? '' }}"
+                           name="product[title]">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="form-group col-md-4">
-                    <label for="Name">Description:</label>
-                    <input type="text" class="form-control" value="{{ old('product.description') ?? '' }}" name="product[description]">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" value="{{ old('product.description') ?? '' }}"
+                           name="product[description]">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="form-group col-md-4">
+                    <label for="image">Image:</label>
                     <input type="file" name="product[image]">
                 </div>
             </div>
@@ -43,8 +46,8 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="form-group col-md-4">
-                    <label for="Name">Price:</label>
-                    <input type="text" class="form-control" id="dinheiro" name="product[price]">
+                    <label for="price">Price:</label>
+                    <input type="text" class="form-control" id="dinheiro" value="{{ old('product.price') ?? '' }}" name="product[price]">
                 </div>
             </div>
 
