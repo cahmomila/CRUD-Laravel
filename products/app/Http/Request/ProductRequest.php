@@ -30,17 +30,19 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product.title' => 'required',
-            'product.description' => 'required',
+            'product.title' => 'required|string|max:20',
+            'product.description' => 'required|string|max:40',
             'product.image' => 'required|image',
-            'product.price' => 'required'
+            'product.price' => 'required|max:10'
         ];
     }
 
     public function messages()
     {
         return [
+            'product.title.max' => 'The title may not be greater than 20 characters.',
             'product.title.required' => 'The title field is required',
+            'product.description.max' => 'The description may not be greater than 40 characters.',
             'product.description.required' => 'The description field is required',
             'product.image.required' => 'The image field is required',
             'product.image.image' => 'The image field must be an image (jpeg, png, bmp, gif, or svg)',

@@ -13,4 +13,9 @@ class Product extends Model
         'thumbnail',
         'price',
     ];
+
+    public function getLink()
+    {
+        Storage::disk('public')->url('uploads/');
+    }
 }

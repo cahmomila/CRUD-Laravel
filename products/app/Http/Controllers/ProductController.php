@@ -13,20 +13,20 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = (new ProductsRepository())->all();
-        return view('index', compact('products'));
+        $products = (new ProductsRepository())->paginate(20);
+        return view('products/index', compact('products'));
     }
 
     public function create()
     {
-        return view('create');
+        return view('products/create');
     }
 
 
     public function edit($id)
     {
         $product = (new ProductsRepository())->find($id);
-        return view('edit', compact('product', 'id'));
+        return view('products/edit', compact('product', 'id'));
     }
 
     public function store(ProductRequest $request, ProductsRepository $productRepository)

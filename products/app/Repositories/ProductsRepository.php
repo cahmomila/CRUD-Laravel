@@ -10,12 +10,12 @@ namespace App\Repositories;
 
 use App\Base\Repository;
 use App\Models\Product;
-use App\Traits\UploadsTraits;
+use App\Traits\UploadableTrait;
 
 
 class ProductsRepository extends Repository
 {
-    use UploadsTraits;
+    use UploadableTrait;
 
     protected function getClass()
     {
@@ -31,7 +31,7 @@ class ProductsRepository extends Repository
         $price = str_replace(',', '.', $price);
         $productData['price'] = $price;
         $productData['image'] = $imageName;
-        $productData['thumbnail'] = 'images/thumb/' . $imageName;
+        $productData['thumbnail'] = 'uploads/thumb/' . $imageName;
 
         $this->model->create($productData);
 
@@ -40,7 +40,7 @@ class ProductsRepository extends Repository
     public function update($id, $productData)
     {
         $product = $this->find($id);
-        $this->deleteIfExists($product);
+        $this->deleteUploadedFilesFor($product);
 
         $imageName = $this->uploadImage($productData['image']);
         $price = $productData['price'];
@@ -48,7 +48,7 @@ class ProductsRepository extends Repository
         $price = str_replace(',', '.', $price);
         $productData['price'] = $price;
         $productData['image'] = $imageName;
-        $productData['thumbnail'] = 'images/thumb/' . $imageName;
+        $productData['thumbnail'] = 'uploads/thumb/' . $imageName;
 
         $product->update($productData);
     }
@@ -56,7 +56,7 @@ class ProductsRepository extends Repository
     public function delete($id)
     {
         $product = $this->find($id);
-        $this->deleteIfExists($product);
+        $this->deleteUploadedFilesFor($product);
         $product->delete();
     }
 

@@ -9,7 +9,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Product;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
@@ -29,7 +29,7 @@ class ProductControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->get('/products');
-        $response->assertViewIs("index");
+        $response->assertViewIs("products.index");
     }
 
     public function testWhenCallGetIndexShouldContainsProducts()
@@ -54,7 +54,7 @@ class ProductControllerTest extends TestCase
         $user = factory(User::class)->create();
         Storage::fake('public');
         $file = UploadedFile::fake()->image('avatar.jpg');
-        $params = ['product' => ['title' => 'flor', 'description' => 'rose', 'image' => $file, 'price' => 3.9]];
+        $params = ['product' => ['title' => 'flor', 'description' => 'rose', 'image' => $file, 'price' => 39]];
         $response = $this->actingAs($user)->post('/products', $params);
         $response->assertRedirect('/products');
     }
