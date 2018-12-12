@@ -19,13 +19,20 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link active bg-white text-dark" href="{{route('home')}}">Home</a>
-                </li>
-            </ul>
+            <i class="material-icons text-white">
+                    filter_vintage</i>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('products.index')}}">List <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -82,7 +89,6 @@
 </div>
 </body>
 <footer>
-
     <script src="{{ asset('js/app.js')}}"></script>
     @yield('scripts')
 </footer>

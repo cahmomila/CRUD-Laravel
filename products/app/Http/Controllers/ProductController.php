@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\ProductRequest;
 use App\Http\Services;
+use Illuminate\Http\Request;
 use App\Repositories\ProductsRepository;
 use Image;
 use File;
@@ -11,22 +12,29 @@ use File;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(ProductsRepository $repository)
     {
-        $products = (new ProductsRepository())->paginate(20);
-        return view('products/index', compact('products'));
+        $products = (new ProductsRepository())->paginate(15);
+        return view('products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('products/create');
+        return view('products.create');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $product = \DB::table('products')->where('title', 'like', '%' . $search . '%')->paginate(5);
+        return view('products.index', ['products' => $product]);
     }
 
 
     public function edit($id)
     {
         $product = (new ProductsRepository())->find($id);
-        return view('products/edit', compact('product', 'id'));
+        return view('products.edit', compact('product', 'id'));
     }
 
     public function store(ProductRequest $request, ProductsRepository $productRepository)

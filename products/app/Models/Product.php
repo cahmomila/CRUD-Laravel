@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
     protected $fillable = [
         'title',
         'description',
@@ -14,8 +15,4 @@ class Product extends Model
         'price',
     ];
 
-    public function getLink()
-    {
-        Storage::disk('public')->url('uploads/');
-    }
 }

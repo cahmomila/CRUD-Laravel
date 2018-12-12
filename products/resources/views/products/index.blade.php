@@ -10,6 +10,16 @@
                 <p>{{ \Session::get('success') }}</p>
             </div><br/>
         @endif
+        <div class="col-md-4">
+            <form action="{{route('search')}}" method="get">
+                <div class="input-group">
+                    <input type="search" name="search" class="form-control">
+                    <span class="input-group-prepend">
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </span>
+                </div>
+            </form>
+        </div>
         <a href="{{route('products.create')}}" class="btn btn-info float-right btn-dark"> <i
                 class="material-icons">add</i></a>
         <table style="text-align: center" class="table table-striped table-hover">
@@ -45,7 +55,6 @@
             @endforeach
             </tbody>
         </table>
-        {{ $products->links() }}
-
+        {{ $products->links()}}
     </div>
 @endsection
