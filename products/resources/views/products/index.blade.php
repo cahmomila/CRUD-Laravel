@@ -13,7 +13,7 @@
         <div class="col-md-4">
             <form action="{{route('search')}}" method="get">
                 <div class="input-group">
-                    <input type="search" name="search" class="form-control">
+                    <input type="search" name="search" placeholder="Search" class="form-control">
                     <span class="input-group-prepend">
                         <button type="submit" class="btn btn-outline-primary">Search</button>
                     </span>
