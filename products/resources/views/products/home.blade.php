@@ -9,7 +9,8 @@
                         <h5 class="card-title">Create Products</h5>
                         <p class="card-text">Page to add a new product</p>
                         <a href="{{route('products.create')}}" class="btn btn-outline-danger btn-lg btn-block">Go to
-                            Create</a>
+                            Create
+                        </a>
                     </div>
                 </div>
             </div>

@@ -29,9 +29,7 @@ trait UploadableTrait
     {
         $imagePath = Storage::disk('public')->path('uploads/' . $fileName);
         $thumb = Image::make($imagePath);
-        $largura = (100 * $thumb->width()) / $thumb->width();
-        $altura = (100 * $thumb->height()) / $thumb->height();
-        $thumb->resize($altura, $largura)->save('storage/uploads/thumb/' . $fileName);
+        $thumb->resize(100, 100)->save('storage/uploads/thumb/' . $fileName);
 
         return $thumb;
     }

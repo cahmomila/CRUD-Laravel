@@ -6,15 +6,23 @@ use App\Http\Request\ProductRequest;
 use App\Http\Services;
 use Illuminate\Http\Request;
 use App\Repositories\ProductsRepository;
+use App\Repositories\Criterias\Where;
 use Image;
 use File;
 
 class ProductController extends Controller
 {
 
-    public function index(ProductsRepository $repository)
+    public function index(ProductsRepository $productRepository, Request $request)
     {
-        $products = (new ProductsRepository())->paginate(15);
+        if ($request->get('search')) {
+            $search = $request->get('search');
+            $products = $productRepository
+                ->pushCriteria(new Where('title', 'like', $search . '%'))
+                ->paginate(15);
+        } else {
+            $products = $productRepository->paginate(15);
+        }
         return view('products.index', compact('products'));
     }
 
@@ -23,32 +31,21 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function search(Request $request)
+    public function edit($id, ProductsRepository $productRepository)
     {
-        $search = $request->get('search');
-        $product = \DB::table('products')->where('title', 'like', '%' . $search . '%')->paginate(5);
-        return view('products.index', ['products' => $product]);
-    }
-
-
-    public function edit($id)
-    {
-        $product = (new ProductsRepository())->find($id);
+        $product = $productRepository->find($id);
         return view('products.edit', compact('product', 'id'));
     }
 
     public function store(ProductRequest $request, ProductsRepository $productRepository)
     {
         $productRepository->create($request->product);
-
-
         return redirect('products')->with('success', 'information added');
     }
 
     public function update(ProductRequest $request, ProductsRepository $productRepository, $id)
     {
         $productRepository->update($id, $request->product);
-
         return redirect('products')->with('success', 'information updated');
     }
 

@@ -19,17 +19,17 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
             <i class="material-icons text-white">
-                    filter_vintage</i>
+                filter_vintage</i>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('products.index')}}">List <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('products.index')}}">List</a>
                     </li>
                 </ul>
             </div>
