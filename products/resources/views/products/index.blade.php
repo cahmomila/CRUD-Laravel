@@ -21,6 +21,7 @@
                     </div>
                 </form>
             </div>
+            <br>
             <a href="{{route('products.create')}}" class="btn btn-info float-right btn-dark"> <i
                     class="material-icons">add</i></a>
             <div class="table-responsive">

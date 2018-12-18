@@ -47657,7 +47657,7 @@ $jscomp.polyfill("Array.prototype.find", function (a) {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-    $('#dinheiro').mask('000.000,00', { reverse: true });
+    $('#moneyinput').mask('000.000,00', { reverse: true });
 });
 
 /***/ }),
