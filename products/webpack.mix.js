@@ -15,5 +15,6 @@ mix.js([
         'resources/js/app.js',
         'resources/js/jquery.mask.js',
         'resources/js/mask.js',
+        'resources/js/deleteConfirm.js',
     ], 'public/js')
    .sass('resources/sass/app.scss', 'public/css');

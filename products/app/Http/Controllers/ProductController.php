@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function destroy($id, ProductsRepository $productRepository)
     {
         $productRepository->delete($id);
-        return redirect('products')->with('success', 'information removed');
+        return ['status' => 200, 'message' => 'Product Deleted'];
     }
 
 }
