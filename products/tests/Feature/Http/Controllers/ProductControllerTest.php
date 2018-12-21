@@ -10,6 +10,7 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
@@ -95,10 +96,14 @@ class ProductControllerTest extends TestCase
     public function testWhenDestroyAProduct()
     {
         $product = factory(\App\Models\Product::class)->create();
-        $params = ['title' => 'Teste', 'description' => 'rose', 'price' => 9];
-        $response = $this->delete('products/' . $product->id);
-
-        $this->assertDatabaseMissing('products', ['id' => $product->id]);
+        $user = factory(User::class)->create();
+        $response = $this->actingAs($user)->withHeaders([
+            'HTTP_ACCEPT' => 'application/json',
+            'HTTP_X-Requested-With' => 'XMLHttpRequest',
+            'X-CSRF-TOKEN' => csrf_token(),
+        ])
+            ->json('DELETE', ('products/' . $product->id))
+            ->assertStatus(200);
 
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\ProductRequest;
 use App\Http\Services;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Repositories\ProductsRepository;
 use App\Repositories\Criterias\Where;
@@ -52,8 +53,15 @@ class ProductController extends Controller
 
     public function destroy($id, ProductsRepository $productRepository)
     {
-        $productRepository->delete($id);
-        return ['status' => 200, 'message' => 'Product Deleted'];
+        try {
+            $productRepository->delete($id);
+            return response()->json(['success' => true]);
+
+        }catch (Exception $e){
+            return response()->json(['error' => true], 500);
+        }
+
     }
+
 
 }

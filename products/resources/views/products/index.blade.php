@@ -99,8 +99,12 @@
                                 $.alert(response.message);
                                 $(`#productId-${id}`).remove();
                             },
-                        });
+                            error: function (response) {
+                                $.alert('Error to delete, try again')
+                            }
+                        })
                     },
+
                     cancel: function () {
                         $.alert('Canceled!');
                     },
