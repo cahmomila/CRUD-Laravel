@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\ProductRequest;
 use App\Http\Services;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Repositories\ProductsRepository;
 use App\Repositories\Criterias\Where;
@@ -50,6 +49,13 @@ class ProductController extends Controller
         return redirect('products')->with('success', 'information updated');
     }
 
+    public function show($id, ProductsRepository $productsRepository)
+    {
+        $product = $productsRepository->find($id);
+
+        return view('products.show', compact('product', 'id'));
+    }
+
 
     public function destroy($id, ProductsRepository $productRepository)
     {
@@ -57,7 +63,7 @@ class ProductController extends Controller
             $productRepository->delete($id);
             return response()->json(['success' => true]);
 
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return response()->json(['error' => true], 500);
         }
 

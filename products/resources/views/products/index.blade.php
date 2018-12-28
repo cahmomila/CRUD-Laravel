@@ -4,7 +4,14 @@
     @if(Auth::user())
         <div class="container">
             <h2 class="text-center">Products List</h2>
-
+            @if(Session::get('status'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>{{ \Session::get('status') }}</p>
+                </div>
+            @endif
             @if (\Session::has('success'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -55,6 +62,7 @@
 
                             <td>
                                 <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning">Edit</a>
+                                <a href="{{route('products.show', $product->id)}}" class="btn btn-info">show</a>
                                 <button class="delete btn btn-danger" onclick="deleteProduct({{$product->id}})"
                                         type="button">Delete
                                 </button>
@@ -99,7 +107,7 @@
                                 $.alert(response.message);
                                 $(`#productId-${id}`).remove();
                             },
-                            error: function (response) {
+                            error: function () {
                                 $.alert('Error to delete, try again')
                             }
                         })

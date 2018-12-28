@@ -15,4 +15,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('products', 'ProductController');
-
+Route::get('/user/{id}/edit' , 'UserController@edit')->name('edit');
+Route::post('/user/{id}/edit',  'UserController@update')->name('update');
+Route::get('/user/{id}/show' , 'UserController@show')->name('show');

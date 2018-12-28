@@ -75,6 +75,8 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                <a class="dropdown-item" href="{{route('edit', Auth::user()->id)}}">Update account</a>
+                                <a class="dropdown-item" href="{{route('show', Auth::user()->id)}}">show account</a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       style="display: none;">
