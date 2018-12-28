@@ -10,16 +10,16 @@
 </head>
 <body>
 <div class="container">
-        <div class="mt-5 card text-center">
-            <div class="card-header">
-                <h3>Product System</h3>
-            </div>
-            <div class="card-body">
-                <h3>Welcome</h3>
-                <h5>
-                    you have created an account in our system, thanks for the preference!</h5>
-            </div>
+    <div class="mt-5 card text-center">
+        <div class="card-header">
+            <h3>Product System</h3>
         </div>
+        <div class="card-body">
+            <h3>Welcome</h3>
+            <h5>
+                you have created an account in our system, thanks for the preference!</h5>
+        </div>
+    </div>
 </div>
 </body>
 </html>

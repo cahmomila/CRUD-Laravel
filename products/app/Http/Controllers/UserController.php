@@ -27,9 +27,9 @@ class UserController extends Controller
         $user = Auth::user();
         $data = $request->all();
         $update = $userRepository->update($id, $data);
-        if($update) {
+        if ($update) {
             $request->session()->flash('status', 'Success, informations updated');
-        }else{
+        } else {
             $request->session()->flash('status', 'Error, current password is wrong');
         }
 
@@ -41,7 +41,6 @@ class UserController extends Controller
         $user = $userRepository->find($id);
         return view('auth.show', compact('user', 'id'));
     }
-
 
 
 }

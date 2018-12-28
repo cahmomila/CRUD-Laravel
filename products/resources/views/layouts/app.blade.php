@@ -8,7 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Product</title>
-    <link rel="icon" type="image/png" href="https://cdn0.iconfinder.com/data/icons/pinpoint-interface/48/product-variations-512.png">
+    <link rel="icon" type="image/png"
+          href="https://cdn0.iconfinder.com/data/icons/pinpoint-interface/48/product-variations-512.png">
 
 
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -33,9 +34,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('products.index')}}">List</a>
-                    </li>
+                    @if(Auth::user())
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{route('products.index')}}">List</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

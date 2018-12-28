@@ -5,6 +5,7 @@
  * Date: 26/12/2018
  * Time: 08:56
  */
+
 namespace App\Repositories;
 
 use App\Base\Repository;
@@ -23,7 +24,7 @@ class UserRepository extends Repository
     public function update($id, $userData)
     {
         $user = $this->find($id);
-        if(Hash::check($userData['password-update'], $user->password)) {
+        if (Hash::check($userData['password-update'], $user->password)) {
             $user->name = $userData['name'];
             $user->email = $userData['email'];
 
@@ -31,7 +32,7 @@ class UserRepository extends Repository
                 $user->password = Hash::make($userData['password']);
             }
 
-           $user->save();
+            $user->save();
             return true;
         }
         return false;
