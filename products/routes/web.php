@@ -18,3 +18,4 @@ Route::resource('products', 'ProductController');
 Route::get('/user/{id}/edit', 'UserController@edit')->name('edit');
 Route::post('/user/{id}/edit', 'UserController@update')->name('update');
 Route::get('/user/{id}/show', 'UserController@show')->name('show');
+//Route::get('/welcome', 'ProductController@welcome')->name('wel');
