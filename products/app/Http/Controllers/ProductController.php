@@ -56,12 +56,6 @@ class ProductController extends Controller
         return view('products.show', compact('product', 'id'));
     }
 
-//    public function welcome()
-//    {
-//        return view('email.welcome');
-//    }
-
-
     public function destroy($id, ProductsRepository $productRepository)
     {
         try {
