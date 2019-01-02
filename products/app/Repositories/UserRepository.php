@@ -38,4 +38,10 @@ class UserRepository extends Repository
         return false;
 
     }
+
+    public function delete($id)
+    {
+        $user = $this->find($id);
+        $user->delete();
+    }
 }

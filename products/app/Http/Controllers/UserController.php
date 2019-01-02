@@ -16,6 +16,7 @@ class UserController extends Controller
      * @param  int $id
      * @return View
      */
+
     public function edit($id)
     {
         $user = Auth::user();
@@ -42,5 +43,17 @@ class UserController extends Controller
         return view('auth.show', compact('user', 'id'));
     }
 
+    public function destroy($id, UserRepository $userRepository)
+    {
+        try {
+            $userRepository->delete($id);
+            return redirect()->route('home');
+
+
+        } catch (Exception $e) {
+            return redirect()->route('auth.edit', $id);
+        }
+
+    }
 
 }
