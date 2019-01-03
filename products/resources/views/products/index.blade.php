@@ -66,13 +66,11 @@
                                 <button class="delete btn btn-danger" onclick="deleteProduct({{$product->id}})"
                                         type="button">Delete
                                 </button>
-
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-
             </div>
             {{ $products->links()}}
         </div>

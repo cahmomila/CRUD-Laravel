@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>Edit User</title>
 @section('content')
     @if(Auth::user())
         <div class="container">
@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="mt-5 btn btn-light btn-lg btn-block"> Update password</div>
-
+                                <div class="text-muted text-center">(Just type it if you want change you password)</div>
                                 <div class="pt-3 form-group row">
                                     <label for="password"
                                            class="col-md-4 col-form-label text-md-right">Password</label>

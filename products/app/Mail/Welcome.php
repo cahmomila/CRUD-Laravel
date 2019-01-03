@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class Welcome extends Mailable
 {
     use Queueable, SerializesModels;
+
     /**
      * Create a new message instance.
      *

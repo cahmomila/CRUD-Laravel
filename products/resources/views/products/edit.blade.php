@@ -1,10 +1,8 @@
 @extends('layouts.app')
+<title>Edit Product</title>
 @section('content')
     @if(Auth::user())
         <div class="container">
-            <br>
-            <h2 class="text-center">Edit Product</h2><br/>
-
             @if(isset($errors))
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -16,6 +14,7 @@
                     </div>
                 @endif
             @endif
+            <h2 class="text-center mt-3 mb-3">Edit Product</h2>
             <form method="post" action="{{route('products.update', $id)}}" enctype="multipart/form-data">
                 @csrf
                 <input name="_method" type="hidden" value="PATCH">
@@ -23,7 +22,8 @@
                     <div class="col-md-4"></div>
                     <div class="form-group col-md-4">
                         <label for="title">Title:</label>
-                        <input type="text" class="form-control" name="product[title]" value="{{$product->title}}">
+                        <input type="text" class="form-control" name="product[title]"
+                               value="{{$product->title}}">
                     </div>
                 </div>
                 <div class="row">
@@ -62,7 +62,8 @@
     @else
         <div style="text-align: center">
             <h1>You must be logged for access this page!</h1>
-            <a href="{{route('home')}}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Go to
+            <a href="{{route('home')}}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Go
+                to
                 login page</a>
         </div>
     @endif

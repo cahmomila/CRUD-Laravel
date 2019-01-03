@@ -14,7 +14,7 @@
                         <button type="button" class="btn btn-light btn-lg btn-block">Description</button>
                         <h4 class="m-3">{{$product->description}}</h4>
                         <button type="button" class="btn btn-light btn-lg btn-block">Price</button>
-                        <h4 class="m-3" data-mask="000.000,00" data-mask-reverse="true">{{$product->price}}</h4>
+                        <h4 id="dinheiro" class="m-3">{{$product->price}}</h4>
                     </div>
                     <img src="/storage/uploads/thumb/{{$product->image}}">
                 </div>

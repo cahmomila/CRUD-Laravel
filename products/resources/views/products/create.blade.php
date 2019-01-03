@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>Create Product</title>
 @section('content')
     @if(Auth::user())
         <div class="container">
@@ -64,6 +64,9 @@
         </div>
     @else
         <div style="text-align: center">
+            <i style="font-size: 100px" class="material-icons">
+                block
+            </i>
             <h1>You must be logged for access this page!</h1>
             <a href="{{route('home')}}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Go to
                 login page</a>
