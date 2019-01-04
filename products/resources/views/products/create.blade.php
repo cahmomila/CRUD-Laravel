@@ -66,12 +66,12 @@
                             </form>
                         </div>
                     </div>
-                    <a href="{{route('products.index')}}" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</a>
+                    <button value="Voltar" onclick="history.go(-1)" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</button>
                 </div>
             </div>
         </div>
     @else
-        <div style="text-align: center">
+        <div class="text-center">
             <i style="font-size: 100px" class="material-icons">
                 block
             </i>

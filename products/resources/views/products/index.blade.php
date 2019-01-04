@@ -37,17 +37,16 @@
                     </a>
                 </div>
             </div>
-
             <div class="table-responsive">
-                <table style="text-align: center" class="table table-striped table-hover">
+                <table class="table table-striped table-hover m-0 text-center">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Thumbnail</th>
-                        <th scope="col">Price(R$)</th>
-                        <th scope="col" colspan="2">Action</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th class="align-middle">Description</th>
+                        <th>Thumbnail</th>
+                        <th>Price(R$)</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,7 +74,7 @@
             {{ $products->links()}}
         </div>
     @else
-        <div style="text-align: center">
+        <div class="text-center">
             <i style="font-size: 100px" class="material-icons">
                 block
             </i>

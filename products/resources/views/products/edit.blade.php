@@ -67,12 +67,12 @@
                             </form>
                         </div>
                     </div>
-                    <a href="{{route('products.index')}}" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</a>
+                    <button value="Voltar" onclick="history.go(-1)" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</button>
                 </div>
             </div>
         </div>
     @else
-        <div style="text-align: center">
+        <div class="text-center">
             <h1>You must be logged for access this page!</h1>
             <a href="{{route('home')}}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Go to
                 login page</a>

@@ -3,6 +3,14 @@
 @section('content')
     @if(Auth::user())
         <div class="container">
+            @if(Session::get('status'))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>{{ \Session::get('status') }}</p>
+                </div>
+            @endif
             <div class="row justify-content-center">
                 <div class="col-md-8">
 
@@ -107,12 +115,12 @@
                                 type="submit">Delete account
                         </button>
                     </form>
-                    <a href="{{route('home')}}" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</a>
+                    <button value="Voltar" onclick="history.go(-1)" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</button>
                 </div>
             </div>
         </div>
     @else
-        <div style="text-align: center">
+        <div class="text-center">
             <i style="font-size: 100px" class="material-icons">
                 block
             </i>

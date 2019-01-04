@@ -30,11 +30,11 @@ class UserController extends Controller
         $update = $userRepository->update($id, $data);
         if ($update) {
             $request->session()->flash('status', 'Success, informations updated');
+            return redirect('products');
         } else {
             $request->session()->flash('status', 'Error, current password is wrong');
+            return view('auth.edit', compact ('user', 'id'));
         }
-
-        return redirect('products');
     }
 
     public function show($id, UserRepository $userRepository)

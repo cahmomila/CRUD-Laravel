@@ -18,8 +18,9 @@
                     </div>
                     <img src="/storage/uploads/thumb/{{$product->image}}">
                 </div>
+                <a href="{{route('products.edit', $product->id)}}" class="mt-3 btn btn-outline-info float-right">Edit Product</a>
             </div>
         </div>
         <div>
-            <a href="{{route('products.index')}}" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</a>
+            <button value="Voltar" onclick="history.go(-1)" class="mt-3 btn btn-dark"><i class="fa fa-arrow-left"></i> Go back</button>
 @endsection
